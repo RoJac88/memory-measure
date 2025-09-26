@@ -46,8 +46,8 @@ fn main() {
         ProcessRefreshKind::everything(),
     );
     let now = Local::now();
-    let fmt_time = now.format("%Y-%m-%d_%H:%M");
-    let file_name = format!("{}_{}.csv", process_name, fmt_time);
+    let fmt_time = now.format("%Y-%m-%d_%Hh-%Mmin");
+    let file_name = format!("{}__{}.csv", fmt_time, process_name);
     let mut output_file = File::create(file_name).expect("Failed to create output_file");
     let headers = "pid,timestamp,ram,vram\n";
     output_file.write(headers.as_bytes()).unwrap();
